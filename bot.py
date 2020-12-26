@@ -4,7 +4,7 @@ Created on Fri Dec 25 20:24:17 2020
 
 @author: karan
 """
-
+import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import urllib.request
 import json
@@ -13,7 +13,10 @@ import os
 PORT = int(os.environ.get('PORT', 5000))
 api_key='7d852108'
 ia = imdb.IMDb() 
-  
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 def start(update, context):
     """Send a message when the command /start is issued."""
@@ -24,6 +27,9 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Help!')
 
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def reply(update, context):
     """Echo the user message."""
@@ -58,6 +64,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(MessageHandler(Filters.text, reply))
+    dp.add_error_handler(error)
 
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
