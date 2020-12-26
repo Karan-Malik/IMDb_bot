@@ -9,6 +9,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import urllib.request
 import json
 import imdb
+import os
+PORT = int(os.environ.get('PORT', 5000))
 api_key='7d852108'
 ia = imdb.IMDb() 
   
@@ -57,7 +59,10 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(MessageHandler(Filters.text, reply))
 
-    updater.start_polling()
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path="1476373283:AAHrdQE394_J8qd78J974y_AwVdwrsis1r0")
+    updater.bot.setWebhook('https://imdb-movie-bot.herokuapp.com/' + "1476373283:AAHrdQE394_J8qd78J974y_AwVdwrsis1r0")
     updater.idle()
 
 
