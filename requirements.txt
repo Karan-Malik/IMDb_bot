@@ -6,7 +6,6 @@ decorator==4.4.2
 IMDbPY==2020.9.25
 lxml==4.6.2
 pycparser==2.20
-pyspark==3.0.1
 python-telegram-bot==13.1
 pytz==2020.5
 six==1.15.0
