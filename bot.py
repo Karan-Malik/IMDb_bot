@@ -48,7 +48,6 @@ def reply(update, context):
     update.message.reply_text(ans,parse_mode='markdown')  
 
 
-
 def main():
 
     updater = Updater("1476373283:AAHrdQE394_J8qd78J974y_AwVdwrsis1r0", use_context=True)
