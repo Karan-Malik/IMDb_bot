@@ -19,20 +19,16 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    """Send a message when the command /start is issued."""
     update.message.reply_text('Hi! \nWelcome to the *IMDb Bot*. \nSend me the name of any movie to get its details. \nHappy viewing! \n \nCreated by [Karan Malik](https://karan-malik.github.io)',parse_mode='markdown')
 
 
 def help(update, context):
-    """Send a message when the command /help is issued."""
     update.message.reply_text('Send me the name of any movie to get its details. \nTry out "Avengers Endgame"')
 
 def error(update, context):
-    """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def reply(update, context):
-    """Echo the user message."""
     movie_name=update.message.text
     search = ia.search_movie(movie_name) 
       
