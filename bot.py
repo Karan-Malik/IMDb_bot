@@ -20,12 +20,12 @@ logger = logging.getLogger(__name__)
 
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Hi! Welcome to the *IMDb Bot*. \n Send me the name of any movie to get its details. \n Happy viewing! \n \n Created by [Karan Malik](https://karan-malik.github.io)',parse_mode='markdown')
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text('Send me the name of any movie to get its details. \n Try out "Avengers Endgame"')
 
 def error(update, context):
     """Log Errors caused by Updates."""
@@ -52,6 +52,7 @@ def reply(update, context):
     ans+='IMDb Rating: '+'*'+data['imdbRating']+'* \n'
     ans+='Cast: '+data['Actors']+'\n'
     ans+='Genre: '+data['Genre']+'\n'
+    ans+='Plot: '+data['Plot']+'\n'
     ans+='[.]('+data['Poster']+')'
     update.message.reply_text(ans,parse_mode='markdown')  
 
