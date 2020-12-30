@@ -48,10 +48,10 @@ def reply(update, context):
     data=json.loads(x)
     
     ans=''
-    ans+='*'+data['Title']+'* ('+data['Year']+')'+'\n'
-    ans+='IMDb Rating: '+'*'+data['imdbRating']+'* \n'
-    ans+='Cast: '+data['Actors']+'\n'
-    ans+='Genre: '+data['Genre']+'\n\n'
+    ans+='*'+data['Title']+'* ('+data['Year']+')'+'\n\n'
+    ans+='*IMDb Rating*: '+data['imdbRating']+' \n'
+    ans+='*Cast*: '+data['Actors']+'\n'
+    ans+='*Genre*: '+data['Genre']+'\n\n'
     ans+='*Plot*: '+data['Plot']+'\n'
     ans+='[.]('+data['Poster']+')'
     update.message.reply_text(ans,parse_mode='markdown')  
